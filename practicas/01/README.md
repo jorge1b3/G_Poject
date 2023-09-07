@@ -72,6 +72,8 @@ Para el xor, primero nos fijamos que es el resultado de un and entre la compuern
 
 ## DMUX
 
+La compuerta Mux tiene como entradas "a", "b" y un selector que en este caso llamamos "sel" y se encarga de decidir que salida será activada de esta forma:
+
 ## OR16
 
 ## AND16
