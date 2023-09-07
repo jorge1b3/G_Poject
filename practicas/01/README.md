@@ -89,6 +89,14 @@ Cuando "sel" es cero, la entrada que se verá reflejada es la "a", mientras que 
 
 La compuerta Mux tiene como entradas "in" y "sel" y se encarga de decidir que salida será activada de esta forma:
 
+| in | sel | out1 | out2 |
+|:--:|:---:|:----:|:----:|
+| 0  | 0   | 0    | 0    |
+| 0  | 1   | 0    | 0    |
+| 1  | 0   | 1    | 0    |
+| 1  | 1   | 0    | 1    |
+
+Para conseguir esta funcionalidad se hizo un procedimiento muy parecido al Mux, sin embargo en este caso las compuertas And comparan "a","sel" y "a","notSel" respectivamente, y la salida de cada And son "Out1" y "Out2" respectivamente.
 
 ## OR16
 
