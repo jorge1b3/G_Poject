@@ -78,12 +78,12 @@ El funcionamiento de la compurta Mux pemite elegir que entrada se verá reflejad
 | 0 | 0 | 1   | 0   |
 | 0 | 1 | 0   | 0   |
 | 0 | 1 | 1   | 1   |
-| 1 | 0 | 0   | 0   |
+| 1 | 0 | 0   | 1   |
 | 1 | 0 | 1   | 0   |
-| 1 | 1 | 0   | 0   |
+| 1 | 1 | 0   | 1   |
 | 1 | 1 | 1   | 1   |
 
-Cuando "sel" es cero, la entrada que se verá reflejada es la "a", mientras que si es uno se verá reflejada la entrada "b"
+Cuando "sel" es cero, la entrada que se verá reflejada es la "a", mientras que si es uno se verá reflejada la entrada "b". Para lograr esta funcionalidad se negó la entrada sel para saber cuando es cero, despues de esto se tienen dos And que tienen "a","notSel" y "b","sel" respectivamente, por ultimo se puso un Or para comprobar cuando alguno de los dos And reflejó un 1.
 
 ## DMUX
 
