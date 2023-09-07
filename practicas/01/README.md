@@ -104,7 +104,11 @@ Habiendo hecho previamente la compuerta Or, esta es particularmente sencilla y m
 
 ## AND16
 
+Este caso es muy similar al anterior, se tienen las mismas entradas y las mismas salidas, la unica diferencia es que en lugar de ser una serie de 16 Or, es una serie de 16 And comparando cada una de las posiciones de los dos vectores de entrada, Ej: "And(a=a[0], b=b[0], out=out[0])"
+
 ## MUX16
+
+En este caso, de nuevo, debemos repetir 16 veces la compuerta original, en este caso la compuerta Mux. Como entradas se tendrán dos vectores de 16 valores "a" y "b" y un selector "sel". A continuación se repetirá 16 veces la compuerta Mux para cada una de las entradas de los vectores, Ej: "Mux(a=a[0], b=b[0], sel=sel, out=out[0])"
 
 ## MUX4W16
 
