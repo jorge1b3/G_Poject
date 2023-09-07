@@ -155,7 +155,6 @@ Que es precisamente un demultiplexor sencillo. Al aplicarlo, aún requerimos los
 
 
 Teniendo así, nuestro demultiplexor.
-## MUX8WAY16
 
 ## DMUX8WAY
 
@@ -200,3 +199,56 @@ Que, como podemos ver, corresponde a un demutiplexor sencillo. Ahora, para obten
 |     1    |     1    |  h  |
 
 Obteniendo así, nuestro Dmux8Way.
+
+## MUX4W16
+
+Primero, haciendo la tabla de verdad del circuito, tenemos
+
+|   A |  B |  C |  D |   sel[1] |   sel[0]  |   out |
+|:---:|:--:|:--:|:--:|:--------:|:---------:|:-----:|
+|   a |  b |  c |  d |     0    |      0    |    a  |
+|   a |  b |  c |  d |     0    |      1    |    b  |
+|   a |  b |  c |  d |     1    |      0    |    c  |
+|   a |  b |  c |  d |     1    |      1    |    d  |
+
+Como podemos ver, podemos separar esto en 2 grupos: El grupo $ab$ y el grupo $cd$. Sabemos que el campo $sel[0]$ nos va dar $0$ o $1$ y esto determinará que valor pasa. En el caso del grupo $ab$, $a$ correspondería a $0$ y $b$ a $1$. Lo mismo pasaría para el grupo $cd$, así que podemos pasar estos como dos mutiplexores sencillos. donde tendríamos:
+
+| A | B |   sel[0]  |   out |
+|:-:|:-:|:---------:|:-----:|
+| a | b |      0    |   a   |
+| a | b |      1    |   b   |
+
+y la tabla
+
+| C | D |   sel[0]  |   out |
+|:-:|:-:|:---------:|:-----:|
+| c | d |      0    |   c   |
+| c | d |      1    |   d   |
+
+Donde, al terminar tendríamos la salida $a$ o $b$ y la salida $c$ o $d$. Por lo que podríamos pasarlo por otro multiplexor, que lea el $sel[1]$ para indicar cual de los grupos pasa. Así, tendríamos:
+
+
+
+| A/B |  C/D  |   sel[0]  |   out |
+|:---:|:-----:|:---------:|:-----:|
+| a/b |   c/d |      0    |  a/b  |
+| a/b |   c/d |      1    |   c/d |
+
+Por lo que nuesto multiplexor de 4ways estaría hecho. Para poderlo hacerlo con 16 entradas, simplemente aplicamos esto en Mux16 en vez de usar Mux.
+
+## MUX8W16
+
+Para este, podemos observar la tabla de datos
+
+| A  | B  | C | D | E | F | G | H |   sel\[2\] | sel\[1\] |  sel\[0\] | out |
+|----|----|---|---|---|---|---|---|------------|----------|-----------|-----|
+| a  | b  | c | d | e | f | g | h | 0          | 0        | 0         | a   |
+|  a |  b | c | d | e | f | g | h | 0          | 0        | 1         | b   |
+| a  |  b | c | d | e | f | g | h | 0          | 1        | 0         | c   |
+| a  |  b | c | d | e | f | g | h | 0          | 1        | 1         | d   |
+| a  |  b | c | d | e | f | g | h | 1          |  0       |  0        | e   |
+| a  |  b | c | d | e | f | g | h | 1          |  0       |  1        | f   |
+| a  |  b | c | d | e | f | g | h | 1          |  1       |  0        | g   |
+| a  |  b | c | d | e | f | g | h | 1          |  1       |  1        | h   |
+
+Podemos observar la similitud con el Mux4W16, entonces intentamos aplicar lo mismo, haciendo 2 grupos y aplicando un multiplexor a la salida. Como al dividir en 2 grupos obtenemos grupos de 4 elementos, usamos un Mux4w16 en cada uno de los grupos, $abcd$ y $efgh$. Al hacerlo, obtenemos dos salidas v1, y v2, que podemos ejecutar con un multiplexor normal(de 16 entradas). El resultado es la salida del mux7w16
