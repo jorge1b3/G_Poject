@@ -100,6 +100,8 @@ Para conseguir esta funcionalidad se hizo un procedimiento muy parecido al Mux, 
 
 ## OR16
 
+Habiendo hecho previamente la compuerta Or, esta es particularmente sencilla y mecanica, como entradas tenemos un vector "a" de tamaño 16 y un vector "b" del mismo tamaño, despues compararemos una por una las posiciones de los vectores, ej: "Or(a=a[0], b=b[0], out=out[0])". Finalmente, como se pudo ver en el ejemplo anterior, la salida, llamada "out" es un vector de 16 valores.
+
 ## AND16
 
 ## MUX16
