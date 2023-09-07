@@ -70,9 +70,12 @@ Para el xor, primero nos fijamos que es el resultado de un and entre la compuern
 
 ## MUX
 
+El funcionamiento de la compurta Mux pemite elegir que entrada se verá reflejada en la salida, teniendo como entradas "a", "b" y "sel" 
+
 ## DMUX
 
-La compuerta Mux tiene como entradas "a", "b" y un selector que en este caso llamamos "sel" y se encarga de decidir que salida será activada de esta forma:
+La compuerta Mux tiene como entradas "in" y un selector que en este caso llamamos "sel" y se encarga de decidir que salida será activada de esta forma:
+
 
 ## OR16
 
