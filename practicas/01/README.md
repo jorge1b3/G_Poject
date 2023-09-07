@@ -118,7 +118,7 @@ Para realizar el MUX4W16, primero observamos la tabla de verdad de la compuerta:
 ## DMUX4WAY
 
 
-Para realizar el DMUX4WAY16, primero observamos la tabla de verdad de la compuerta:
+Para realizar el DMux4Way, primero observamos la tabla de verdad de la compuerta:
 
 |sel\[1\]|sel\[0\]|out|
 |:------:|:------:|:-:|
@@ -159,6 +159,7 @@ Teniendo así, nuestro demultiplexor.
 
 ## DMUX8WAY
 
+Primero, observemos la tabla de verdad de nuestro demultiplexor.
 
 | sel\[2\] | sel\[1\] | sel\[0\] | out |
 |:--------:|:--------:|:--------:|:---:|
@@ -180,7 +181,7 @@ Pero como con el DMux4Way, podemos observar que se puede separar en dos grúpos.
 
 Que, como podemos ver, corresponde a un demutiplexor sencillo. Ahora, para obtener cada una de las salidas por separado, pasamos cada salida de nuestro aplicado demutiplexor por dos demultiplexores de 4 entradas.
 
->Dmux4Way$(abcd)$
+>Dmux4Way $(abcd)$
 
 | sel\[1\] | sel\[0\] | out |
 |:--------:|:--------:|:---:|
@@ -189,7 +190,7 @@ Que, como podemos ver, corresponde a un demutiplexor sencillo. Ahora, para obten
 |     1    |     0    |  c  |
 |     1    |     1    |  d  |
 
->Dmux4Way$(efgh)$
+>Dmux4Way $(efgh)$
 
 | sel\[1\] | sel\[0\] | out |
 |:--------:|:--------:|:---:|
