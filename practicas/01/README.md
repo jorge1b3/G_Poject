@@ -110,10 +110,92 @@ Este caso es muy similar al anterior, se tienen las mismas entradas y las mismas
 
 En este caso, de nuevo, debemos repetir 16 veces la compuerta original, en este caso la compuerta Mux. Como entradas se tendrán dos vectores de 16 valores "a" y "b" y un selector "sel". A continuación se repetirá 16 veces la compuerta Mux para cada una de las entradas de los vectores, Ej: "Mux(a=a[0], b=b[0], sel=sel, out=out[0])"
 
-## MUX4W16
+## MUX4WAY16
 
-## DMUX4W16
+Para realizar el MUX4W16, primero observamos la tabla de verdad de la compuerta:
 
-## MUX8W16
 
-## DMUX8W16
+## DMUX4WAY
+
+
+Para realizar el DMUX4WAY16, primero observamos la tabla de verdad de la compuerta:
+
+|sel\[1\]|sel\[0\]|out|
+|:------:|:------:|:-:|
+|    0   |    0   | a |
+|    0   |    1   | b |
+|    1   |    0   | c |
+|    1   |    1   | d |
+
+Siendo la entrada in $0$ o $1$. Ahora, como podemos observar, las salida $(a,b)$ y las salidas $(c,d)$ tienen el mismo bit en el selector $sel[1]$, por lo que podríamos gruparlas, obteniendo:
+
+
+
+|sel\[1\]|  out  |
+|:------:|:-----:|
+|    0   |$(a,b)$|
+|    1   |$(c,d)$|
+
+Que es precisamente un demultiplexor sencillo. Al aplicarlo, aún requerimos los valores de $a$, $b$, $c$ y $d$ por separado, pero si nos fijamos bien, estos a su vez, generan un demultiplexor por cada par:
+
+> Dmux $(a,b)$
+
+|sel\[0\]|out|
+|:------:|:-:|
+|    0   |$a$|
+|    1   |$b$|
+
+
+> Dmux $(c,d)$
+
+|sel\[0\]|out|
+|:------:|:-:|
+|    0   |$c$|
+|    1   |$d$|
+
+
+Teniendo así, nuestro demultiplexor.
+## MUX8WAY16
+
+## DMUX8WAY
+
+
+| sel\[2\] | sel\[1\] | sel\[0\] | out |
+|:--------:|:--------:|:--------:|:---:|
+|     0    |     0    |     0    |  a  |
+|     0    |     0    |     1    |  b  |
+|     0    |     1    |     0    |  c  |
+|     0    |     1    |     1    |  d  |
+|     1    |     0    |     0    |  e  |
+|     1    |     0    |     1    |  f  |
+|     1    |     1    |     0    |  g  |
+|     1    |     1    |     1    |  h  |
+
+Pero como con el DMux4Way, podemos observar que se puede separar en dos grúpos. Donde tenemos el grupo del sel\[2\] igual a 0 con $abcd$ y el grupo con sel\[2\] igual a 1 con $efgh$. Ahora, obtenemos la siguiente tabla
+
+| sel\[2\] |   out  |
+|:--------:|:------:|
+|     0    | $abcd$ |
+|     1    | $efgh$ |
+
+Que, como podemos ver, corresponde a un demutiplexor sencillo. Ahora, para obtener cada una de las salidas por separado, pasamos cada salida de nuestro aplicado demutiplexor por dos demultiplexores de 4 entradas.
+
+>Dmux4Way$(abcd)$
+
+| sel\[1\] | sel\[0\] | out |
+|:--------:|:--------:|:---:|
+|     0    |     0    |  a  |
+|     0    |     1    |  b  |
+|     1    |     0    |  c  |
+|     1    |     1    |  d  |
+
+>Dmux4Way$(efgh)$
+
+| sel\[1\] | sel\[0\] | out |
+|:--------:|:--------:|:---:|
+|     0    |     0    |  e  |
+|     0    |     1    |  f  |
+|     1    |     0    |  g  |
+|     1    |     1    |  h  |
+
+Obteniendo así, nuestro Dmux8Way.
