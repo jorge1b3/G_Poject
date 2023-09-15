@@ -1,3 +1,7 @@
 *.out
 *.cmp
 *.tst
+.vscode
+trabajando/aux/
+trabajando/test/
+trabajando/*.sh
