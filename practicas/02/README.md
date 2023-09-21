@@ -42,7 +42,7 @@ Como cada una de estas instrucciones son sucesivas, primero aplicamos $zx$ y $zy
 
 Podemos observar que un multiplexor actúa como un $if$ de programación, donde si es verdadero hace algo, y si es falso, otra cosa. Para ello, primero calculamos las posibles salidas. El caso de $zx$, calculamos x y una fila de ceros. Luego, al multiplexor, pasamos como entrada los valores calculamos y elegimos en función del selector zx. Para zy, nx, ny, f y "no", realizamos la misma operación, en forma de árbol.
 
-==INSERTAR IMAGEN==
+![Screenshot_20230921_153544](https://github.com/jorge1b3/G_Poject/assets/16739365/7913e644-09bc-498c-b943-96abfb9849c7)
 
 Ahora, debemos considerar dos salidas más, zr y ng. Para zr, es sencillo. Con un "or" observamos si alguna de los bits de la salida es igual a 1 (lo hacemos en cadena para usar or8way). Luego, negamos la salida. Así, si al menos uno de los elementos es 1, la salida es false. Si todos son 0, es true.
 
