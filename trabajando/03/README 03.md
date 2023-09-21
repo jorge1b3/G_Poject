@@ -11,13 +11,13 @@ Register tiene la función de guardar una entrada "in[16]" de 16 bits en un "out
 Entrando al mundo de la memoria RAM se empezará por una memoria sencilla y pequeña, en este caso tan solo tendremos 8 espacios para guardar datos. Para esta funcionalidad tendremos unas entrada extra en cuanto a los anteriores chips, esta es "address" la cual indicará en que puerto o espacio guardaremos el dato de "in[16]", un "DMux" será el encargado de escoger el que espacio entrará el dato de acuerdo al address, posterior al DMux se tendrá una sucesion de 8 "register" que representa cada uno de los espacios de memoria y finalmente, un chip "Mux" será el que imprima el dato guardado en el espacio especifico en que se deba haber guardado.
 
 # RAM64
-
+RAM64 funciona de manera analoga al chip "RAM8", en este caso se aumentará el espacio de ram poniendo 8 chips RAM8 sucesivamente creando 64 espacios de memoria, el "address" en este caso tendrá un tamaño de 6 bits en el cual escogerá tanto la "RAM8" en la que se guardará el dato (primeros 3 digitos) como el espacio dentro de la RAM8 en la que se guardará (ultimos 3 digitos). Por ultimo el DMux de igual forma imprimirá en que espacio de memoria se guardó el dato e imprimirá el dato correspondiente. 
 
 # PC
 
 
 # RAM512
-
+Este caso 
 
 # RAM4K
 
