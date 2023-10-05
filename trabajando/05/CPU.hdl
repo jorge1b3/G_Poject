@@ -40,7 +40,7 @@ CHIP CPU
         pc[15];          // address of next instruction
 
     PARTS:
-    //obtener tipo de instrucción
+    //INSTRUCCIÓN
     Not(in=instruction[15], out=Ainstruction);
     Not(in=Ainstruction, out=Cinstruction);
     And(a=Cinstruction, b=instruction[5], out=ALUtoA);   
@@ -53,12 +53,12 @@ CHIP CPU
     ALU(x=Dout, y=AMout, zx=instruction[11], nx=instruction[10], 
         zy=instruction[9], ny=instruction[8], f=instruction[7],
         no=instruction[6], out=ALUout, zr=ZRout, ng=NGout);
-    // Establecer salidas para escribir memoria
+    // SALIDAS PARA MEMORIA
     Or16(a=false, b=Aout, out[0..14]=addressM);
     Or16(a=false, b=ALUout, out=outM);
     And(a=Cinstruction, b=instruction[3], out=writeM);
  
-    // calcular PCload & PCinc - si cargar PC con A reg
+    // PCload & PCinc
     And(a=ZRout, b=instruction[1], out=jeq);  
     And(a=NGout, b=instruction[2], out=jlt);   
     Or(a=ZRout, b=NGout, out=zeroOrNeg);
