@@ -29,22 +29,22 @@ CHIP Memory
 
     PARTS:
 
-    //determinar cual cargar
+    //ENCONTRAR CUAL CARGAR
     DMux(in=load,sel=address[14],a=ramload,b=skload);
     DMux(in=skload,sel=address[13],a=sload,b=nothing);
 
-    //Cargar la RAM y la pantalla
+    //SE CARGA RAM Y PANTALLA
     RAM16K(in=in,load=ramload,address=address[0..13],out=ramout);
     Screen(in=in,load=sload,address=address[0..12],out=screenout);
   	
-    //Tratar con el teclado, asegúrese de que todos los bits en [0..12] sean 0
+    //INTENTAR CON TECLADO, MIRAR QUE LOS BITS [0..12] SEAN IGUAL A 0
     Keyboard(out=kbd);
     Or8Way(in=address[0..7], out=notkbd1);
     Or8Way(in[0..4]=address[8..12], in[5..7]=false, out=notkbd2);
     Or(a=notkbd1,b=notkbd2,out=notkbd);
     Mux16(a=kbd,b=false,sel=notkbd,out=kbdout);
 
-    //Determinar cual es la salida
+    //SALIDA
     Mux16(a=ramout,b=outsk,sel=address[14],out=out);
     Mux16(a=screenout,b=kbdout,sel=address[13],out=outsk); 	 
 }
