@@ -1,0 +1,3 @@
+[submodule "practicas/06/assembler"]
+	path = practicas/06/assembler
+	url = https://github.com/jorge1b3/Assembler
