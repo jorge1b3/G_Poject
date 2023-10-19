@@ -1,0 +1,3 @@
+## Teniendo en cuenta las características del ensamblador, ¿Cuál es la principal limitante que observan? Justifique su respuesta.
+
+La principal limitante de este ensamblador es que la traducción a binario es de tan solo 16 bits lo que genera un límite a la hora de definir variables numéricas para hacer operaciones. Esto porque los números declarados están sujetos a ser de un tamaño máximo (en binario) de 15 bits, por ende, los números no pueden ser mayores a 32.768. Además, a esto se suma otra gran limitante y es que el ensamblador por su misma estructura no permite el ingreso de números flotantes, pues la forma en el que el compilador entiende las instrucciones enviadas por el ensamblador no distingue números decimales y los toma todos como números enteros.
