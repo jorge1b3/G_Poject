@@ -11,3 +11,5 @@ La clase encargada de la traduccion del codigo como tal es "CodeWriter" la cual 
   4) generar excepcion en caso de econtrar un argunmento desconocido.
   5) Devolver el diccionario con las direcciones de los diferentes segmentos de memoria.
 
+Sin embargo, la clase CodeWriter no funcionará si antes no se prepara el archivo para ser ingresado a la misma. Para ello, se utilizará la clase "Parser" encargada de:
+1) 
