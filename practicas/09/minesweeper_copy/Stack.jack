@@ -1,0 +1,54 @@
+/**
+ * Represents a stack using an array. Can be used to hold any type of object.
+ */
+class Stack {
+
+    field Array array;  // The underlying array
+    field int size;     // The size of the stack
+    field int top;      // The index of the top element
+
+    /** Constructs a new Stack of the given size. */
+    constructor Stack new(int size) {
+        let array = Array.new(size);
+        let top = -1;  // Initialize top index to -1 (empty stack)
+        let size = size;  // Set the size of the stack
+        return this;
+    }
+
+    /** Pushes an element onto the stack. */
+    method void push(int element) {
+        if (top < size - 1) {
+            let array[top + 1] = element;
+            let top = top + 1;
+        } else {
+            // Stack is full, handle overflow as needed
+            // For simplicity, we print an error message and do nothing in this example
+            do Output.printString("Stack overflow: Cannot push onto a full stack");
+        }
+        return;
+    }
+
+    /** Pops an element from the stack. */
+    method int pop() {
+      var int result;
+      if (top > 0 | top = 0) {
+        let result = array[top];
+        let top = top - 1;
+        return result;
+      } else {
+        // Se simplifica el error retornando 0. Debería retornar error
+        do Output.printString("Stack underflow: Cannot pop from an empty stack");
+        return 0;
+      }
+    }
+
+    /** De-allocates the stack and frees its space. */
+    method void dispose() {
+        do array.dispose();
+        return;
+    }
+
+    method int size(){
+      return size;
+    }
+}

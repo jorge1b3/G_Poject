@@ -1,0 +1,48 @@
+function Cell.new 0
+push constant 3
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+pop this 0
+push constant 0
+pop this 1
+push constant 0
+pop this 2
+push pointer 0
+return
+function Cell.is_mine 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Cell.set_mine 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 0
+push constant 0
+return
+function Cell.is_revealed 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Cell.set_revealed 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 1
+push constant 0
+return
+function Cell.adjacent_mines 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Cell.set_adjacent_mines 0
+push argument 0
+pop pointer 0
+push argument 1
+pop this 2
+push constant 0
+return

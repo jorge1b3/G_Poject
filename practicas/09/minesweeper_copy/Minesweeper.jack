@@ -1,0 +1,164 @@
+class Minesweeper {
+  field int cols, rows, num_mines;
+  field Array board;
+  field int num_revealed;
+  field boolean game_over;
+
+  constructor Minesweeper new(int num_cols, int num_rows, int mines) {
+    let cols = num_cols;
+    let rows = num_rows;
+    let num_mines = mines;
+    let board = Array.new(rows * cols);
+    let num_revealed = 0;
+    let game_over = false;
+    return this;
+  }
+
+  method boolean is_game_over() {
+    return game_over;
+  }
+
+  method void initialize_board() {
+    var Array mines;
+    var int index;
+    var int mine_index;
+    var int row;
+    var int col;
+    var int i;
+    var int j;
+    var Cell cell;
+
+    let mines = Array.new(num_mines);
+    let index = 0;
+
+    while (index < num_mines) {
+      do Random.setSeed(20);
+      let mine_index = Random.randRange(rows * cols);
+      let row = mine_index / cols;
+      let col = mine_index -  (row * cols);
+      let cell = board[(row * cols) + col];
+
+      if (~(cell.is_mine())) {
+        do cell.set_mine(true);
+        let i = Math.max(0, row - 1);
+        let j = Math.max(0, col - 1);
+
+        while (i < Math.min(rows, row + 2)) {
+          while (j < Math.min(cols, col + 2)) {
+            let cell = board[(i * cols) + j];
+            do cell.set_adjacent_mines(cell.adjacent_mines() + 1);
+            let j = j + 1;
+          }
+          let i = i + 1;
+        }
+        let index = index + 1;
+      }
+    }
+    return;
+  }
+
+  method void reveal_cell(int row, int col) {
+    var Cell cell;
+    var Stack stack;
+    var int cell_index;
+    var int i;
+    var int j;
+    var int cell_index;
+    var Cell neighbor_cell;
+
+
+    let cell = board[(row * cols) + col];
+    if ( ((row < 0) | (row > rows) | (row = rows)) | (((col < 0) | (col > cols) | (col > cols)) | cell.is_revealed())) {
+      return;
+    }
+
+    let stack = Stack.new(rows * cols);
+    do stack.push((row * cols) + col);
+
+    while (stack.size() > 0) {
+
+      
+      let cell = board[(cell_index / cols)*(cell_index -  ((cell_index / cols)) * cols) + cell_index -  ((cell_index / cols)) * cols];
+      let cell_index = stack.pop();
+      let neighbor_cell = cell;
+
+      if (~neighbor_cell.is_revealed()) {
+        do neighbor_cell.set_revealed(true);
+        let num_revealed = num_revealed + 1;
+
+        if (neighbor_cell.is_mine()) {
+          let game_over = true;
+          return;
+        }
+
+        if (neighbor_cell.adjacent_mines() = 0) {
+
+          let i = Math.max(0, row - 1);
+          let j = Math.max(0, col - 1);
+
+          while(i < Math.min(rows, row + 2)) {
+            while(j < Math.min(cols, col + 2)) {
+              do stack.push((i * cols) + j);
+              let j = j + 1;
+            }
+            let i = i + 1;
+          }
+        }
+      }
+    }
+    return;
+  }
+
+  method void print_board() {
+    // generate header
+    var int i;
+    var int row_index, col_index;
+    var Cell cell;
+    var char c;
+    var String s;
+
+    do Output.printString("  ");
+    
+    let i = 0;
+
+    while(i < cols){
+      let s = String.setInt(i + 97);
+      do Output.printString(c);
+      do Output.printChar(" ");
+      let i = i + 1;
+    }
+    do Output.println();
+
+    // generate board
+    
+    let row_index = 0;
+    let col_index = 0;
+
+    while(row_index < rows){
+      let s = String.setInt(row_index + 97);
+      do Output.printString(s);
+      do Output.printChar(" ");
+      while(col_index < cols){
+        let cell = board[row_index*cols +col_index];
+        if (~(cell.is_revealed())) {
+          do Output.printChar("- ");
+        } else {
+          if (cell.is_mine()) {
+            do Output.printChar("X ");
+          } else {
+            do Output.printInt(cell.adjacent_mines());
+            do Output.printChar(" ");
+          }
+        }
+        let col_index = col_index + 1;
+        do Output.println();
+      }
+      let row_index = row_index + 1;
+    }
+    return;
+  }
+
+  method boolean is_win() {
+    return (num_revealed = (rows * cols - num_mines)) & (~game_over);
+  }
+}

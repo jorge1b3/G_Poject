@@ -2,3 +2,6 @@
 	path = practicas/06/assembler
 	url = https://github.com/jorge1b3/Assembler
 	branch = main
+[submodule "practicas/09/minesweeper"]
+	path = practicas/09/minesweeper
+	url = https://github.com/jorge1b3/minesweeper

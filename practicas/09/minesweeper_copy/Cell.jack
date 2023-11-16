@@ -1,0 +1,39 @@
+class Cell {
+  field boolean is_mine;
+  field boolean is_revealed;
+  field int adjacent_mines;
+
+  constructor Cell new(){
+    let is_mine = false;
+    let is_revealed = false;
+    let adjacent_mines = 0;
+    return this;
+  }
+
+  method boolean is_mine(){
+    return is_mine;
+  }
+
+  method void set_mine(bool mine){
+    let is_mine = mine;
+    return;
+  }
+
+  method boolean is_revealed(){
+    return is_revealed;
+  }
+
+  method void set_revealed(bool revealed){
+    let is_revealed = revealed;
+    return;
+  }
+
+  method int adjacent_mines(){
+    return adjacent_mines;
+  }
+
+  method void set_adjacent_mines(int mines){
+    let adjacent_mines = mines;
+    return;
+  }
+}

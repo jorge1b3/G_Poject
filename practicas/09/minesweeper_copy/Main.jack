@@ -1,0 +1,55 @@
+class Main {
+
+  function int secuencia_a_indices(String secuencia) {
+    var int row, col;
+    if (~(String.length(secuencia) = 2)) {
+        do Output.printString("La secuencia debe tener dos caracteres");
+        return (Array.new(0,0));
+    }
+    let row = String.charAt(secuencia, 0) - 97; // --> cambar 33 por el valor de ascii de 'a'
+    let col = String.charAt(secuencia, 1) - 97;
+    return (Array.new(row,col));
+}
+
+  function void main() {
+  var int rows, cols, mines;
+  var Minesweeper board;
+  var String input;
+  var int row, col;
+  var Array posiciones;
+
+
+  let rows = Keyboard.readInt("Ingrese el número de filas: ");
+  let cols = Keyboard.readInt("Ingrese el número de columnas: ");
+  let mines = Keyboard.readInt("Ingrese el número de minas: ");
+
+  let board = Minesweeper.new(rows, cols, mines);
+  do board.initialize_board();
+
+  do board.print_board();
+
+  while (~(board.is_game_over()) & board.is_win()) {
+    
+    let input = Keyboard.readLine("Ingrese la secuencia de fila y columna de la casilla a revelar (ejemplo: 'ab'): ");
+    let posiciones = Main.secuencia_a_indices(input); // --> error
+    let row = posiciones[0];
+    let col = posiciones[1];
+    do board.reveal_cell(row, col);
+
+    if (board.is_game_over()) {
+      do Output.printString("¡Lo siento, has perdido!");
+      do board.print_board();
+    }
+
+    if (board.is_win()) {
+      do Output.printString("¡Haz Ganado, felicidades!");
+      do board.print_board();
+    }
+
+    do board.print_board();
+  }
+  return;
+}
+
+
+}
