@@ -1,4 +1,12 @@
-# ¿Qué se debe considerar para proponer un nuevo y buen lenguaje de programación, teniendo en cuenta la arquitectura de computador completa? Justifique su respuesta
+# Desarrolle más el concepto de lenguaje de alto nivel, teniendo en cuenta la diferencia entre lenguajes de programación propiamente dichos e interpretadores.
+
+Un lenguaje de alto nivel sirve como un medio para que las personas se comuniquen con las computadoras de una manera diseñada para ser fácilmente comprensible y para expresar de manera lógica las operaciones que se desean que realice la computadora. En contraste con los lenguajes de bajo nivel, que son más técnicos y específicos de la estructura de la computadora, los lenguajes de alto nivel se distancian de esos detalles y proporcionan maneras más potentes de expresar ideas. Esto simplifica y hace más eficiente la tarea de los programadores al escribir código.
+
+Cuando se trata de lenguajes de programación, estos actúan como herramientas esenciales que permiten a los programadores establecer comunicación con las computadoras. Ejemplos comunes incluyen Python, Java y C++, y cada uno tiene características y beneficios específicos, siendo más adecuado para ciertos tipos de tareas.
+
+En lo que respecta a los interpretadores, funcionan como asistentes que ejecutan directamente el código escrito en un lenguaje de programación. A diferencia de los compiladores, que traducen el código a un formato específico antes de ejecutarlo, los interpretadores toman el código tal como está escrito y lo ejecutan línea por línea. Esto implica que, por ejemplo, en Python y JavaScript, es posible ejecutar el código sin la necesidad de realizar una fase de compilación previa.
+
+# Bonus: ¿Qué se debe considerar para proponer un nuevo y buen lenguaje de programación, teniendo en cuenta la arquitectura de computador completa? Justifique su respuesta
 
 Al proponer un nuevo lenguaje de programación, se debe considerar la eficiencia de ejecución para garantizar un rendimiento óptimo en la arquitectura del computador. Además, la legibilidad del código es esencial para facilitar el desarrollo y el mantenimiento.  
 Debe admitir programación concurrente, está se basa en la ejecución simultánea de varias tareas dentro de un programa, en lugar de ejecutar un conjunto de instrucciones paso a paso, esto puede mejorar la eficiencia del lenguaje al aprovechar múltiples núcleos de CPU y facilitar la gestión de tareas; para aprovechar sistemas modernos y gestionar eficientemente la memoria. La capacidad de aprovechar características específicas de la arquitectura, como paralelización y optimización de instrucciones, también es crucial para maximizar el rendimiento en hardware específico.  
